@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>White Hole — Novela Web</title>
+  <script>
+    (function(){
+      var f=['favicon.png','favicon-mahiru.png','favicon-saffi.png'];
+      var i=Math.floor(Math.random()*f.length);
+      var l=document.createElement('link');
+      l.rel='icon'; l.type='image/png';
+      l.href='../assets/images/'+f[i];
+      document.head.appendChild(l);
+    })();
+  </script>
+
+<link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/reader.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="wh-reader-page" data-page="novel">
+  <div class="bg-layer bg-parallax-1"></div>
+  <div class="bg-layer bg-parallax-2"></div>
+  <div class="bg-layer bg-parallax-3"></div>
+  <div class="noise-overlay"></div>
+  <div class="bg-aurora"></div>
+  <div class="floating-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <canvas id="particles"></canvas>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <header class="top-bar">
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <span class="menu-icon">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+        <div class="site-logo-wrap" id="siteLogoWrap" aria-hidden="true">
+      <img class="site-logo site-logo-a" src="../assets/images/logo-emiru.jpg" alt="" data-light="../assets/images/logo-emiru.jpg" data-dark="../assets/images/logo-emiru-dark.jpg">
+      <img class="site-logo site-logo-b" src="../assets/images/logo-mahiru.jpg" alt="" data-light="../assets/images/logo-mahiru.jpg" data-dark="../assets/images/logo-mahiru-dark.jpg">
+    </div>
+    <h1 class="site-title site-title-enter">
+      <span class="title-glow">WHITE</span>
+      <span class="title-hole">HOLE</span>
+    </h1>
+    <div class="top-bar-spacer"></div>
+    <div class="music-controls">
+<button class="music-toggle top-music" id="musicToggle" aria-label="Silenciar música" title="Música">
+      <span class="music-icon on"><img src="../assets/images/icons/volume-on.svg" alt=""></span>
+      <span class="music-icon off"><img src="../assets/images/icons/volume-off.svg" alt=""></span>
+    </button>
+      <span class="volume-pct" id="volumePct">20%</span>
+      <div class="volume-track-wrap"><input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="20" aria-label="Volumen"></div>
+    </div>
+    <button class="theme-toggle top-theme" id="themeToggle" aria-label="Cambiar tema">
+      <span class="theme-icon sun"><img src="../assets/images/icons/sun.svg" alt=""></span>
+      <span class="theme-icon moon"><img src="../assets/images/icons/moon.svg" alt=""></span>
+    </button>
+    <div class="visit-counter" title="En línea">
+      <span class="dot"></span>
+      <span id="onlineCount">1</span>
+    </div>
+
+  </header>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+      <div class="sidebar-header">
+        <div class="logo-mark">
+          <div class="logo-ring"></div>
+          <div class="logo-core"></div>
+        </div>
+        <span class="sidebar-brand">WH</span>
+      </div>
+      <nav class="side-nav">
+        <a href="../index.html" class="side-link" data-page="home">
+          <span class="side-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+          </span>
+          <span class="side-text">Inicio</span>
+          <span class="side-indicator"></span>
+        </a>
+        <a href="novel.html" class="side-link" data-page="novel">
+          <span class="side-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h8"/></svg>
+          </span>
+          <span class="side-text">Novela Web</span>
+          <span class="side-indicator"></span>
+        </a>
+        <a href="library.html" class="side-link" data-page="library">
+          <span class="side-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </span>
+          <span class="side-text">Biblioteca</span>
+          <span class="side-indicator"></span>
+        </a>
+        <a href="owner.html" class="side-link" data-page="owner">
+          <span class="side-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </span>
+          <span class="side-text">Owner</span>
+          <span class="side-indicator"></span>
+        </a>
+      </nav>
+</div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="reader-main">
+    <div class="reader-header">
+      <button type="button" class="theater-btn" id="theaterToggle" title="Modo teatro">🎭 Teatro</button>
+      <p class="reader-arc">Arco 1 · Capítulo 1</p>
+      <h2 class="reader-title">A Day Like Any Other</h2>
+      <p class="reader-meta">Untamed Flame</p>
+    </div>
+    <article class="reader-body" id="readerBody">
+<p>Entre la muchedumbre estudiantil, una chica de cabello cobrizo corre agitada hacia la entrada de la escuela, donde otra chica de anteojos la lleva esperando de brazos cruzados durante un buen rato, demostrando inquietud con pequeños pero rápidos movimientos de sus dedos.</p>
+<p>—¿Por qué tarda tanto? Moriré de calor aquí.</p>
+<p>Al presentarse ante ella, le entrega una libreta de apuntes con notas que sobresalen entre páginas. Y, como si se le escapara el alma, intenta recuperar el aliento recostándose de cara contra la pared.</p>
+<p>Su amiga se acomoda los anteojos y, con algo de compasión, dice:</p>
+<p>—Emiru, eres todo un desastre, pero… te compraré un jugo.</p>
+<p>Sin voz para pronunciar, responde juntando ambas palmas sobre su cabeza.</p>
+<p>Ya dentro de la escuela, ambas caminan a la cafetería. En general, la escuela es muy grande, con pantallas, máquinas expendedoras y demás cosas ubicadas estratégicamente entre pasillos, es ese tipo de escuela para gente con padres adinerados.</p>
+<p>—Supongo que… uno de mora.</p>
+<p>—Aquí tiene. Serían quince lirios —declara la casera.</p>
+<p>—¿Quince? ¿Pues a qué hora subieron los precios…?</p>
+<p>De repente, la campana suena un par de veces para anunciar el inicio de clases.</p>
+<p>¡Triiiin! ¡Triiiin!</p>
+<p>—¿Quéee? Pero si apenas llegamos a comprar.</p>
+<p>—Tch… Solo bébelo todo de un sorbo, la primera clase es con ese profesor —advierte, disgustada.</p>
+<p>Alterada al ver cada vez menos estudiantes, toma a Emiru del brazo y se la lleva a rastras.</p>
+<p>—¿Mahiru? E-Espera, no puedo beber así.</p>
+<p>En el aula, el profesor llama a lista sin ánimo alguno, pero las chicas recién llegan.</p>
+<p>—¿Tarde otra vez, Barielay?</p>
+<p>—¿¡Qué!? ¿Por qué solamente me-?</p>
+<p>Antes de terminar, su amiga le tapa la boca con su única mano libre. Y, nerviosa, piensa en alguna excusa para evitar el sermón frente a sus compañeros.</p>
+<p>—Disculpe la tardanza, profesor. Necesitaba ayuda con unas cosas en la biblioteca y...</p>
+<p>El profesor las observa con mirada severa, pero al final decide dejarlas pasar.</p>
+<p>—Está bien, pueden tomar asiento. Pero que no se vuelva a repetir, señorita Kihara.</p>
+<p><em>¿Me estás jodiendo en serio?</em> —piensa Emiru, con fastidio en su cara.</p>
+<p>Emiru se sienta sin esforzarse en ocultar su indignación, mientras que Mahiru suspira aliviada ya detrás de su libreta. Así, el profesor termina el listado y finalmente comienza la clase.</p>
+<p>—Ya que todos están listos, no perdamos más tiempo. Hoy conoceremos la historia de los keepers, ¿alguien ha escuchado este término antes…? —pregunta retóricamente.</p>
+<div class="story-divider">✦ ✦ ✦ ✦</div>
+<p class="story-lore">Hace eras, una malvada reina envenenó la tierra, su energía era inagotable y su sabiduría incomparable. A pesar de su cruel personalidad, de ella nacía una devoción innegable por el mundo, gracias a ella existe la vida silvestre, la inteligencia y todo lo que hoy conocemos.</p>
+<p class="story-lore">Sin embargo, sus guardias más fieles, aquellos en quienes depositó toda confianza, alzaron sus armas contra ella y la asesinaron sin piedad ni remordimiento.</p>
+<p class="story-lore">Los traidores heredaron parte de su poder y se dedicaron a proteger la tierra en su nombre, pero la reina no se extinguió del todo. Al morir, su sangre manchó el suelo sin que nadie se percatara, y con el pasar de los años, un brote emergió desde las profundidades.</p>
+<p class="story-lore">La humanidad sufrió cambios irreversibles, únicas en cada víctima, como si la voluntad de la reina se burlara en silencio de sus descendientes. Los que aún conservan su humanidad, portadores de un poder único, son conocidos como Keepers. Y, por otro lado, los que no fueron bendecidos con dones extraordinarios, pero que, en cambio, sufrieron cambios físicos, se les conoce como Embodiers.</p>
+<p class="story-lore">Estos últimos cargaron durante generaciones con el rechazo y el miedo de los demás, marginados hasta por sus propios seres queridos. Y aunque hoy en día es más flexible la convivencia entre ambos, los problemas nunca terminan. Este es el merecido castigo impuesto por la reina, la hija del cielo.</p>
+<div class="story-divider">✦ ✦ ✦ ✦</div>
+<p>Después de clases, las chicas salen juntas como de costumbre.</p>
+<p>—Me sorprende que no haya dejado tarea de investigación esta vez —dice Emiru.</p>
+<p>—Tampoco nos regañó por llegar tarde, tal vez solo estaba de buen humor.</p>
+<p>Emiru la mira incrédula, sin ganas de responder a lo que acaba de escuchar. Pero para no arruinar el ambiente, avanza varios metros hacia delante, estira los brazos y respira con fuerza.</p>
+<p>—Tengo mucha hambre, ¿qué te parece si mejor vamos al festival de comida frita?</p>
+<p>Mahiru observa su semblante, alegre como siempre. Eso es suficiente para convencerla.</p>
+<p>—Bien, esta es tu oportunidad para devolverme el favor.</p>
+<p>—¿Cuál bebida?</p>
+<p>—Dije favor, no bebida.</p>
+<p>—¿Cuál favor?</p>
+<p>—No te hagas la tonta ahora…</p>
+<p>Después de un largo trayecto, ambas llegan al distrito gastronómico. El lugar está muy vivo durante la semana debido al festival, perfecto para quienes buscan nuevos sabores y divertirse socializando. Y es justo así como las chicas derrochan su tiempo durante la tarde.</p>
+<p>Al menos hasta que…</p>
+<p>—¡Ayuda, un ladrón! —grita una señora, aterrorizada.</p>
+<p>Todo el gentío se alborota al escucharla. Por otra parte, las chicas ya saben cómo actuar en situaciones como esta, intercambiando miradas rápidamente antes de moverse.</p>
+<p>—Tú adelántate, avisaré a la policía —ordena Mahiru.</p>
+<p>—Gracias, te pagaré mi parte más tarde.</p>
+<p>De esta forma inesperada, nuestra chica de cabello cobrizo y ojos esmeraldas entra en acción.</p>
+<p>El ladrón atraviesa el distrito a toda velocidad, abriéndose paso a empujones y tirando cualquier cosa que tenga enfrente convencido de que nadie lo atrapará.</p>
+<p>El plan es sencillo: Hacer parkour entre estructuras y esperar que tropiece. Como nadie suele mirar hacia arriba, tiene toda la ventaja. Emiru lo sabe y derrocha confianza bromeando sola.</p>
+<p>—Disculpe por el tropiezo, es que me distraje con tanta comida… No, esa frase es muy larga…</p>
+<p>Mientras tanto, el ladrón ya se encuentra perdido entre la multitud. Además, un par de hombres lo persiguen desde hace rato, dejando al pobre sin muchas opciones.</p>
+<p>—A todo esto, ¿por qué tengo que disculparme con un ladrón? —murmura para sí misma.</p>
+<p>Desesperado por encontrar una salida, decide dar vuelta atrás en busca de otro camino. Ahí es cuando Emiru aprovecha para saltar y hacer su entrada.</p>
+<p>—Señor, ¿sabe dónde se encuentra la estación de policía más cercana…? —actúa desorientada.</p>
+<p>Como si fuese parte del decorado callejero, el ladrón intenta pasar de ella, pues una colegiala cualquiera no debe representar peligro alguno, ¿verdad?</p>
+<p>Pero en cuanto pone un pie frente a ella, Emiru separa los pies y gira el torso para conectarle un fuerte puñetazo en el estómago. Al recibirlo, el ladrón instantáneamente queda sin aliento, pierde el equilibrio y cae al suelo en un intento por mantenerse de pie.</p>
+<p>Emiru suspira molesta y dice:</p>
+<p>—Si no lo sabe, puedo llevarlo personalmente.</p>
+<p>El par de hombres finalmente llega para retenerlo antes de que intente huir de nuevo. Al darse cuenta el ladrón, su expresión cambia a una de resignación.</p>
+<p>De repente, aplausos y gritos de festejo transforman el ambiente. Emiru no puede evitar dejarse llevar y se rasca la cabeza mientras sonríe con nerviosismo para todos.</p>
+<p>Entonces, una señora incluso más atemorizante que el ladrón se acerca hacia ella.</p>
+<p>—Muchacha, lo que hiciste fue valiente. Toma esto como regalo.</p>
+<p>Dudosa, recibe una bolsa de papel, caliente y grasienta. Al abrirla, ve el paraíso.</p>
+<p>—¿Empanadas de carne? ¡Me encantan, muchas gracias!</p>
+<p>Luego, recibe otra bolsa con buñuelos, otra con pan dulce, una bebida, etcétera. El mundo no ha sido salvado ni nada por el estilo, pero el barrio es generoso.</p>
+<p>La policía recién aparece durante la avalancha de regalos, y poco después aparece Mahiru.</p>
+<p>—Emi… Por fin, ahí estás…</p>
+<p>Con comida ya en la boca, Emiru se gira para ver quién es. Pero al notar esa absurda cantidad de químicos procesados en sus brazos, Mahiru hace un gesto de desagrado.</p>
+<p>—Solo pasaron unos pocos minutos, ¿en qué momento…?</p>
+<p>—¿Mafibu? Miba tofo lo que confebí.</p>
+<p>Que Emiru balbucee con la boca llena es un acto deliberado, típico de su personalidad. Mahiru cierra los ojos tras liberar un gran suspiro como reacción y luego responde:</p>
+<p>—Definitivamente ya no sé qué haré contigo…</p>
+<div class="story-divider">✦ ✦ ✦ ✦</div>
+<p>Al llegar a casa de Emiru, la puerta se abre antes de que las chicas hagan algo. Del otro lado, un chico alto y rubio aparece. La serenidad de su rostro desaparece al ver tal montaña de comida.</p>
+<p>—¿Qué es… eso? —dice casi en silencio.</p>
+<p>—Buenas tardes, Keiren —Mahiru saluda con educación.</p>
+<p>—Hola Kei, trajimos comida~</p>
+<p>Perplejo, las deja entrar sin devolver una respuesta más que su cara llena de confusión.</p>
+<p>—Hermano, ¿no saludas o qué traes?</p>
+<p>—Yo… nunca antes había saludado una montaña de comida.</p>
+<p>—Difícil de asimilar, ¿no es así? Yo tuve una reacción parecida —coincide Mahiru.</p>
+<p>Dicho eso, las chicas colocan con cuidado bolsas de comida sobre la mesa mientras el hermano mayor las observa todavía parado frente a la puerta.</p>
+<p>—Keiren, ¿qué pasa, tienes hambre? —pregunta Emiru.</p>
+<p>—¿Eh-? No. Saldré un momento, hablamos más tarde —dice con tono apresurado.</p>
+<p>Ambas responden a la vez:</p>
+<p>—¡Nos vemos!</p>
+<p>Ahora que todo terminó, por fin se puede retomar el ocio. La comida desaparece poco a poco al igual que las horas. Aparte de comer y conversar, las chicas también queman su tiempo jugando videojuegos en la sala de estar. Aunque Mahiru luce desconcentrada, algo bastante inusual en ella.</p>
+<p>—¡Toma! Te gané de nuevo, jajaja! —entonces, lo nota—. Hey, ¿te pasa algo?</p>
+<p>—Oye Emi, ¿has vuelto a tener esa extraña sensación de calor en tus dedos? —pregunta mientras pasa el mando de una mano a otra con la mirada perdida.</p>
+<p>—La verdad, no he vuelto a sentirme así desde entonces, ¿aún te preocupa?</p>
+<p>—Estuve investigando y, aunque no encontré nada parecido, descubrí un foro casi abandonado de personas narrando vivencias igual de extrañas.</p>
+<p>—¿Cómo cuáles? —pregunta por inercia, concentrada en el juego.</p>
+<p>—Mencionan situaciones sin sentido y juran sufrir extraños cambios físicos.</p>
+<p>—Pues yo no me he sentido así de rara. De hecho, ¿por qué alguien tan escéptica como tú se toma tan en serio tanta palabrería infundada?</p>
+<p>—Escuché a mi padre tener una conversación bastante particular, y en los noticieros se nota que encubren información importante al respecto.</p>
+<p>—Que oculten información es muy común, tú misma lo dijiste.</p>
+<p>—Pero esto parece ir más allá, es algo más intenso.</p>
+<p>De repente, la puerta se abre. Keiren acaba de regresar y Emiru se levanta para recibirlo.</p>
+<p>—Kei, ¿regresas tan pronto? —dice con tono sarcástico.</p>
+<p>—Lo sé, lo sé. Pero adivina qué, te traje un regalo.</p>
+<p>—¿En serio? ¡No puede ser! —lo celebra con un abrazo.</p>
+<p>Mientras los hermanos charlan, Mahiru piensa aún inquieta en el sofá:</p>
+<p><em>—Si sus síntomas vuelven, ¿dónde se supone que buscaré ayuda?</em></p>
+<p>Keiren se da cuenta de su extraño comportamiento y cambia de tema para hacerla reaccionar.</p>
+<p>—Oigan, ¿quieren que les caliente algo? Recordar esa montaña de comida da hambre.</p>
+<p>—Gracias, pero no es necesario. Además, ya es hora de que me vaya —responde Mahiru.</p>
+<p>—¿Tan de noche? Sabes que puedes quedarte a dormir.</p>
+<p>Firme en su decisión, Mahiru se dirige hacia la puerta con su mochila al hombro.</p>
+<p>—Estaré bien, Keiren. No debes preocuparte demasiado. Muchas gracias por la comida.</p>
+<p>Mahiru luce muy seria, y el misterio de su silencio aún persiste. Al cerrar la puerta desde fuera, el frío de la noche se comienza a sentir sobre la piel.</p>
+<p>—Puede que esta vez el recorrido no sea tan sencillo como parece.</p>
+<p>Con palabras tan ambiguas es difícil saber a qué se refiere. En cualquier caso, su actitud es un gran enigma.</p>
+    </article>
+    <div class="reader-nav">
+      <a href="#" class="reader-nav-btn is-disabled" id="prevChapter" aria-disabled="true">← Anterior</a>
+      <a href="novel.html" class="reader-nav-btn reader-nav-center">Arcos</a>
+      <a href="#" class="reader-nav-btn is-disabled" id="nextChapter" aria-disabled="true">Siguiente →</a>
+    </div>
+      </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <span class="footer-brand">WHITE HOLE</span>
+      <span class="footer-sep">•</span>
+      <span class="footer-copy">Portal de contenido</span>
+    </div>
+</footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/reader.js"></script>
+  <audio id="bgMusic" src="../assets/audio/bgm.mp3" loop preload="auto"></audio>
+</body>
+</html>

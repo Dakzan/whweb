@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>White Hole — Portal</title>
+  <script>
+    (function(){
+      var f=['favicon.png','favicon-mahiru.png','favicon-saffi.png'];
+      var i=Math.floor(Math.random()*f.length);
+      var l=document.createElement('link');
+      l.rel='icon'; l.type='image/png';
+      l.href='assets/images/'+f[i];
+      document.head.appendChild(l);
+    })();
+  </script>
+
+<link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-page="home">
+  <div class="bg-layer bg-parallax-1" data-parallax="0.04"></div>
+  <div class="bg-layer bg-parallax-2" data-parallax="0.08"></div>
+  <div class="bg-layer bg-parallax-3" data-parallax="0.12"></div>
+  <div class="noise-overlay"></div>
+  <div class="bg-aurora" data-parallax="0.06"></div>
+  <div class="floating-orbs">
+    <div class="orb orb-1" data-parallax="0.15"></div>
+    <div class="orb orb-2" data-parallax="0.1"></div>
+    <div class="orb orb-3" data-parallax="0.18"></div>
+  </div>
+  <canvas id="particles"></canvas>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <header class="top-bar">
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <span class="menu-icon">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+        <div class="site-logo-wrap" id="siteLogoWrap" aria-hidden="true">
+      <img class="site-logo site-logo-a" src="assets/images/logo-emiru.jpg" alt="" data-light="assets/images/logo-emiru.jpg" data-dark="assets/images/logo-emiru-dark.jpg">
+      <img class="site-logo site-logo-b" src="assets/images/logo-mahiru.jpg" alt="" data-light="assets/images/logo-mahiru.jpg" data-dark="assets/images/logo-mahiru-dark.jpg">
+    </div>
+    <h1 class="site-title site-title-enter">
+      <span class="title-glow">WHITE</span>
+      <span class="title-hole">HOLE</span>
+    </h1>
+    <div class="top-bar-spacer"></div>
+    <div class="music-controls">
+<button class="music-toggle top-music" id="musicToggle" aria-label="Silenciar música" title="Música">
+      <span class="music-icon on"><img src="assets/images/icons/volume-on.svg" alt=""></span>
+      <span class="music-icon off"><img src="assets/images/icons/volume-off.svg" alt=""></span>
+    </button>
+      <span class="volume-pct" id="volumePct">20%</span>
+      <div class="volume-track-wrap"><input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="20" aria-label="Volumen"></div>
+    </div>
+    <button class="theme-toggle top-theme" id="themeToggle" aria-label="Cambiar tema">
+      <span class="theme-icon sun"><img src="assets/images/icons/sun.svg" alt=""></span>
+      <span class="theme-icon moon"><img src="assets/images/icons/moon.svg" alt=""></span>
+    </button>
+    <div class="visit-counter" title="En línea">
+      <span class="dot"></span>
+      <span id="onlineCount">1</span>
+    </div>
+
+  </header>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+      <div class="sidebar-header">
+        <div class="logo-mark">
+          <div class="logo-ring"></div>
+          <div class="logo-core"></div>
+        </div>
+        <span class="sidebar-brand">WH</span>
+      </div>
+      <nav class="side-nav">
+        <a href="index.html" class="side-link active" data-page="home">
+          <span class="side-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+          </span>
+          <span class="side-text">Inicio</span>
+          <span class="side-indicator"></span>
+        </a>
+        <a href="pages/novel.html" class="side-link" data-page="novel">
+          <span class="side-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h8"/></svg>
+          </span>
+          <span class="side-text">Novela Web</span>
+          <span class="side-indicator"></span>
+        </a>
+        <a href="pages/library.html" class="side-link" data-page="library">
+          <span class="side-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </span>
+          <span class="side-text">Biblioteca</span>
+          <span class="side-indicator"></span>
+        </a>
+        <a href="pages/owner.html" class="side-link" data-page="owner">
+          <span class="side-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </span>
+          <span class="side-text">Owner</span>
+          <span class="side-indicator"></span>
+        </a>
+      </nav>
+</div>
+    </div>
+  </aside>
+
+    <main class="main-content home-main">
+    <section class="blackhole-section">
+      <div class="blackhole-container" id="blackholeCore">
+        <div class="event-horizon"></div>
+        <div class="accretion-disk"></div>
+        <div class="accretion-disk disk-2"></div>
+        <div class="singularity"></div>
+        <div class="photon-ring"></div>
+        <div class="gravitational-lensing"></div>
+      </div>
+      <div class="home-content">
+        <h2 class="home-title">
+          <span class="line">BIENVENIDO AL</span>
+          <span class="line accent">WHITE HOLE</span>
+        </h2>
+        <p class="home-sub">Un portal de contenido original · Novelas · Anime · Redes</p>
+        <div class="home-actions">
+          <a href="pages/novel.html" class="btn-primary large" id="continueReadingBtn">
+            <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h8"/></svg>
+            <span id="continueReadingLabel">Leer Novela</span>
+            <span class="btn-shine"></span>
+          </a>
+          <a href="pages/library.html" class="btn-outline large">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            <span>Biblioteca Anime</span>
+          </a>
+        </div>
+<blockquote class="lore-quote" id="loreQuote">
+          <p class="lore-quote-text" id="loreQuoteText"></p>
+          <cite class="lore-quote-cite" id="loreQuoteCite"></cite>
+        </blockquote>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <span class="footer-brand">WHITE HOLE</span>
+      <span class="footer-sep">•</span>
+      <span class="footer-copy">Portal de contenido</span>
+    </div>
+</footer>
+
+  <script src="assets/js/main.js"></script>
+  <audio id="bgMusic" src="assets/audio/bgm.mp3" loop preload="auto"></audio>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>White Hole — Biblioteca Anime</title>
+  <script>
+    (function(){
+      var f=['favicon.png','favicon-mahiru.png','favicon-saffi.png'];
+      var i=Math.floor(Math.random()*f.length);
+      var l=document.createElement('link');
+      l.rel='icon'; l.type='image/png';
+      l.href='../assets/images/'+f[i];
+      document.head.appendChild(l);
+    })();
+  </script>
+
+<link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/library.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-page="library">
+  <div class="bg-layer bg-parallax-1"></div>
+  <div class="bg-layer bg-parallax-2"></div>
+  <div class="bg-layer bg-parallax-3"></div>
+  <div class="noise-overlay"></div>
+  <div class="bg-aurora"></div>
+  <div class="floating-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <canvas id="particles"></canvas>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <header class="top-bar">
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <span class="menu-icon">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+        <div class="site-logo-wrap" id="siteLogoWrap" aria-hidden="true">
+      <img class="site-logo site-logo-a" src="../assets/images/logo-emiru.jpg" alt="" data-light="../assets/images/logo-emiru.jpg" data-dark="../assets/images/logo-emiru-dark.jpg">
+      <img class="site-logo site-logo-b" src="../assets/images/logo-mahiru.jpg" alt="" data-light="../assets/images/logo-mahiru.jpg" data-dark="../assets/images/logo-mahiru-dark.jpg">
+    </div>
+    <h1 class="site-title site-title-enter">
+      <span class="title-glow">WHITE</span>
+      <span class="title-hole">HOLE</span>
+    </h1>
+    <div class="top-bar-spacer"></div>
+    <div class="music-controls">
+<button class="music-toggle top-music" id="musicToggle" aria-label="Silenciar música" title="Música">
+      <span class="music-icon on"><img src="../assets/images/icons/volume-on.svg" alt=""></span>
+      <span class="music-icon off"><img src="../assets/images/icons/volume-off.svg" alt=""></span>
+    </button>
+      <span class="volume-pct" id="volumePct">20%</span>
+      <div class="volume-track-wrap"><input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="20" aria-label="Volumen"></div>
+    </div>
+    <button class="theme-toggle top-theme" id="themeToggle" aria-label="Cambiar tema">
+      <span class="theme-icon sun"><img src="../assets/images/icons/sun.svg" alt=""></span>
+      <span class="theme-icon moon"><img src="../assets/images/icons/moon.svg" alt=""></span>
+    </button>
+    <div class="visit-counter" title="En línea">
+      <span class="dot"></span>
+      <span id="onlineCount">1</span>
+    </div>
+
+  </header>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+      <div class="sidebar-header">
+        <div class="logo-mark">
+          <div class="logo-ring"></div>
+          <div class="logo-core"></div>
+        </div>
+        <span class="sidebar-brand">WH</span>
+      </div>
+      <nav class="side-nav">
+        <a href="../index.html" class="side-link" data-page="home">
+          <span class="side-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+          </span>
+          <span class="side-text">Inicio</span>
+          <span class="side-indicator"></span>
+        </a>
+        <a href="novel.html" class="side-link" data-page="novel">
+          <span class="side-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h8"/></svg>
+          </span>
+          <span class="side-text">Novela Web</span>
+          <span class="side-indicator"></span>
+        </a>
+        <a href="library.html" class="side-link active" data-page="library">
+          <span class="side-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </span>
+          <span class="side-text">Biblioteca</span>
+          <span class="side-indicator"></span>
+        </a>
+        <a href="owner.html" class="side-link" data-page="owner">
+          <span class="side-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </span>
+          <span class="side-text">Owner</span>
+          <span class="side-indicator"></span>
+        </a>
+      </nav>
+</div>
+    </div>
+  </aside>
+
+  <main class="main-content" id="mainContent">
+    <section class="hero-section">
+      <div class="hero-text">
+        <h2 class="hero-title">
+          <span class="line">BIBLIOTECA</span>
+          <span class="line accent">ANIME</span>
+        </h2>
+        <p class="hero-sub">Arrastra las portadas • Toca para expandir</p>
+      </div>
+      <div class="hero-deco">
+        <div class="orbit orbit-1"></div>
+        <div class="orbit orbit-2"></div>
+        <div class="orbit orbit-3"></div>
+        <div class="core-pulse"></div>
+      </div>
+    </section>
+
+    <div class="library-search-wrap">
+      <div class="library-search-row">
+        <div class="library-search">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input type="search" id="animeSearch" class="search-input" placeholder="Buscar anime..." autocomplete="off" spellcheck="false" aria-label="Buscar anime">
+          <button type="button" class="search-clear" id="searchClear" aria-label="Limpiar búsqueda" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <a href="https://discord.gg/J6RV8sxkGP" target="_blank" rel="noopener" class="btn-request-anime">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/>
+          </svg>
+          <span>Solicita un anime aquí</span>
+        </a>
+      </div>
+      <p class="search-count" id="searchCount"></p>
+    </div>
+
+    <div class="carousel-hint">← Arrastra para navegar →</div>
+    <section class="carousel-section">
+      <div class="carousel-wrapper" id="carouselWrapper">
+        <div class="carousel-track" id="carouselTrack">
+          <article class="anime-card" data-id="bocchi" data-title="Bocchi the Rock!"><span class="card-badge-nuevo">Nuevo</span>
+            <div class="card-glow"></div>
+            <div class="card-inner">
+              <div class="card-particles"><span></span><span></span><span></span><span></span></div>
+              <div class="card-image-wrap">
+                <img src="../assets/images/animes/bocchi.jpg" alt="Bocchi the Rock!" loading="lazy" draggable="false">
+                <div class="card-shine"></div>
+              </div>
+              <div class="card-title-bar">
+                <h3>Bocchi the Rock!</h3>
+              </div>
+            </div>
+          </article>
+
+          <article class="anime-card" data-id="fate" data-title="Fate Series">
+            <div class="card-glow"></div>
+            <div class="card-inner">
+              <div class="card-particles"><span></span><span></span><span></span><span></span></div>
+              <div class="card-image-wrap">
+                <img src="../assets/images/animes/fate.jpg" alt="Fate Series" loading="lazy" draggable="false">
+                <div class="card-shine"></div>
+              </div>
+              <div class="card-title-bar">
+                <h3>Fate Series</h3>
+              </div>
+            </div>
+          </article>
+
+          <article class="anime-card" data-id="monogatari" data-title="Monogatari Series">
+            <div class="card-glow"></div>
+            <div class="card-inner">
+              <div class="card-particles"><span></span><span></span><span></span><span></span></div>
+              <div class="card-image-wrap">
+                <img src="../assets/images/animes/monogatari.jpg" alt="Monogatari Series" loading="lazy" draggable="false">
+                <div class="card-shine"></div>
+              </div>
+              <div class="card-title-bar">
+                <h3>Monogatari Series</h3>
+              </div>
+            </div>
+          </article>
+
+          <article class="anime-card" data-id="seraph" data-title="Owari no Seraph"><span class="card-badge-nuevo">Nuevo</span>
+            <div class="card-glow"></div>
+            <div class="card-inner">
+              <div class="card-particles"><span></span><span></span><span></span><span></span></div>
+              <div class="card-image-wrap">
+                <img src="../assets/images/animes/seraph.jpg" alt="Owari no Seraph" loading="lazy" draggable="false">
+                <div class="card-shine"></div>
+              </div>
+              <div class="card-title-bar">
+                <h3>Owari no Seraph</h3>
+              </div>
+            </div>
+          </article>
+
+          <article class="anime-card" data-id="rezero" data-title="Re:Zero kara Hajimeru Isekai Seikatsu">
+            <div class="card-glow"></div>
+            <div class="card-inner">
+              <div class="card-particles"><span></span><span></span><span></span><span></span></div>
+              <div class="card-image-wrap">
+                <img src="../assets/images/animes/rezero.jpg" alt="Re:Zero" loading="lazy" draggable="false">
+                <div class="card-shine"></div>
+              </div>
+              <div class="card-title-bar">
+                <h3>Re:Zero</h3>
+              </div>
+            </div>
+          </article>
+
+          <article class="anime-card" data-id="shana" data-title="Shakugan no Shana">
+            <div class="card-glow"></div>
+            <div class="card-inner">
+              <div class="card-particles"><span></span><span></span><span></span><span></span></div>
+              <div class="card-image-wrap">
+                <img src="../assets/images/animes/shana.jpg" alt="Shakugan no Shana" loading="lazy" draggable="false">
+                <div class="card-shine"></div>
+              </div>
+              <div class="card-title-bar">
+                <h3>Shakugan no Shana</h3>
+              </div>
+            </div>
+          </article>
+
+          <article class="anime-card" data-id="umamusume" data-title="Uma Musume: Pretty Derby">
+            <div class="card-glow"></div>
+            <div class="card-inner">
+              <div class="card-particles"><span></span><span></span><span></span><span></span></div>
+              <div class="card-image-wrap">
+                <img src="../assets/images/animes/umamusume.jpg" alt="Uma Musume" loading="lazy" draggable="false">
+                <div class="card-shine"></div>
+              </div>
+              <div class="card-title-bar">
+                <h3>Uma Musume: Pretty Derby</h3>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      
+    </section>
+  </main>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content" id="modalContent">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-body">
+        <div class="modal-image-side">
+          <img id="modalImg" src="" alt="">
+          <div class="modal-img-glow"></div>
+        </div>
+        <div class="modal-info-side">
+          <h2 id="modalTitle"></h2>
+          <div class="modal-tags" id="modalTags"></div>
+          <div class="modal-actions" id="modalActions">
+            <button type="button" class="btn-password" id="modalPasswordBtn" hidden>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span>Ver clave</span>
+            </button>
+            <div class="password-reveal" id="passwordReveal" hidden>
+              <span class="password-label">Clave de extraíbles:</span>
+              <code class="password-value" id="passwordValue"></code>
+              <button type="button" class="password-copy" id="passwordCopy" title="Copiar">Copiar</button>
+            </div>
+            <div class="download-links" id="modalDownloads"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <span class="footer-brand">WHITE HOLE</span>
+      <span class="footer-sep">•</span>
+      <span class="footer-copy">Portal de contenido</span>
+    </div>
+</footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/library.js"></script>
+  <audio id="bgMusic" src="../assets/audio/bgm.mp3" loop preload="auto"></audio>
+</body>
+</html>
