@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>White Hole — Novela Web</title>
+  <script>
+    (function(){
+      var f=['favicon.png','favicon-mahiru.png','favicon-saffi.png'];
+      var i=Math.floor(Math.random()*f.length);
+      var l=document.createElement('link');
+      l.rel='icon'; l.type='image/png';
+      l.href='../assets/images/'+f[i];
+      document.head.appendChild(l);
+    })();
+  </script>
+
+<link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/novel.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-page="novel">
+  <div class="bg-layer bg-parallax-1"></div>
+  <div class="bg-layer bg-parallax-2"></div>
+  <div class="bg-layer bg-parallax-3"></div>
+  <div class="noise-overlay"></div>
+  <div class="bg-aurora"></div>
+  <div class="floating-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <canvas id="particles"></canvas>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <header class="top-bar">
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <span class="menu-icon">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+        <div class="site-logo-wrap" id="siteLogoWrap" aria-hidden="true">
+      <img class="site-logo site-logo-a" src="../assets/images/logo-emiru.jpg" alt="" data-light="../assets/images/logo-emiru.jpg" data-dark="../assets/images/logo-emiru-dark.jpg">
+      <img class="site-logo site-logo-b" src="../assets/images/logo-mahiru.jpg" alt="" data-light="../assets/images/logo-mahiru.jpg" data-dark="../assets/images/logo-mahiru-dark.jpg">
+    </div>
+    <h1 class="site-title site-title-enter">
+      <span class="title-glow">WHITE</span>
+      <span class="title-hole">HOLE</span>
+    </h1>
+    <div class="top-bar-spacer"></div>
+    <div class="music-controls">
+<button class="music-toggle top-music" id="musicToggle" aria-label="Silenciar música" title="Música">
+      <span class="music-icon on"><img src="../assets/images/icons/volume-on.svg" alt=""></span>
+      <span class="music-icon off"><img src="../assets/images/icons/volume-off.svg" alt=""></span>
+    </button>
+      <span class="volume-pct" id="volumePct">20%</span>
+      <div class="volume-track-wrap"><input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="20" aria-label="Volumen"></div>
+    </div>
+    <button class="theme-toggle top-theme" id="themeToggle" aria-label="Cambiar tema">
+      <span class="theme-icon sun"><img src="../assets/images/icons/sun.svg" alt=""></span>
+      <span class="theme-icon moon"><img src="../assets/images/icons/moon.svg" alt=""></span>
+    </button>
+    <div class="visit-counter" title="En línea">
+      <span class="dot"></span>
+      <span id="onlineCount">1</span>
+    </div>
+
+  </header>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+      <div class="sidebar-header">
+        <div class="logo-mark">
+          <div class="logo-ring"></div>
+          <div class="logo-core"></div>
+        </div>
+        <span class="sidebar-brand">WH</span>
+      </div>
+      <nav class="side-nav">
+        <a href="../index.html" class="side-link" data-page="home">
+          <span class="side-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+          </span>
+          <span class="side-text">Inicio</span>
+          <span class="side-indicator"></span>
+        </a>
+        <a href="novel.html" class="side-link active" data-page="novel">
+          <span class="side-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h8"/></svg>
+          </span>
+          <span class="side-text">Novela Web</span>
+          <span class="side-indicator"></span>
+        </a>
+        <a href="library.html" class="side-link" data-page="library">
+          <span class="side-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </span>
+          <span class="side-text">Biblioteca</span>
+          <span class="side-indicator"></span>
+        </a>
+        <a href="owner.html" class="side-link" data-page="owner">
+          <span class="side-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </span>
+          <span class="side-text">Owner</span>
+          <span class="side-indicator"></span>
+        </a>
+      </nav>
+</div>
+    </div>
+  </aside>
+
+  <main class="main-content novel-main">
+    <section class="novel-hero">
+      <div class="novel-orbits">
+        <div class="n-orbit n1"></div>
+        <div class="n-orbit n2"></div>
+        <div class="n-orbit n3"></div>
+      </div>
+      <div class="novel-layout">
+        <div class="novel-art">
+          <div class="novel-art-glow"></div>
+          <div class="novel-art-ring"></div>
+          <img src="../assets/images/novel-cover.png" alt="Personajes de la novela de Dakzan" class="novel-cover-img novel-cover-dark" draggable="false">
+          <img src="../assets/images/novel-cover-light.png" alt="Personajes de la novela de Dakzan" class="novel-cover-img novel-cover-light" draggable="false">
+        </div>
+        <div class="novel-content-box">
+          <div class="novel-badge">En emisión: Arco 1</div>
+          <h2 class="novel-title">
+            <span>Lee la novela</span>
+            <span class="highlight">de Rulekeeper</span>
+          </h2>
+          <p class="novel-desc">
+            La historia combina la vida diaria con el descubrimiento progresivo de un mundo anómalo y distópico, profundizando en misterios que amenazan la lógica y la duda de qué es real o un delirio.
+          </p>
+          <div class="novel-actions">
+            <a href="https://getinkspired.com/es/u/dakzan/" target="_blank" rel="noopener" class="btn-primary large">
+              <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
+              <span>Abrir Novela</span>
+              <span class="btn-shine"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="arcs-section">
+      <div class="arcs-header">
+        <h3 class="arcs-title">Arcos argumentales</h3>
+        <p class="arcs-sub">Elige un arco para ver sus capítulos</p>
+      </div>
+
+      <div class="arcs-search-wrap">
+        <div class="arcs-search">
+          <svg class="arcs-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input type="search" id="arcsSearch" class="arcs-search-input" placeholder="Buscar arco o capítulo..." autocomplete="off" spellcheck="false" aria-label="Buscar arcos y capítulos">
+          <button type="button" class="arcs-search-clear" id="arcsSearchClear" aria-label="Limpiar" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <p class="arcs-search-count" id="arcsSearchCount"></p>
+      </div>
+
+      <div class="arcs-grid" id="arcsGrid">
+        <!-- filled by novel.js -->
+      </div>
+      <p class="arcs-empty" id="arcsEmpty" hidden>No se encontraron arcos o capítulos.</p>
+    </section>
+
+
+    <section class="characters-section" id="charactersSection">
+      <h2 class="section-heading">Personajes</h2>
+      <div class="characters-grid" id="charactersGrid"></div>
+    </section>
+
+    <div class="chapters-overlay" id="chaptersOverlay" hidden>
+      <div class="chapters-backdrop" id="chaptersBackdrop"></div>
+      <div class="chapters-panel" role="dialog" aria-modal="true" aria-labelledby="chaptersTitle">
+        <button type="button" class="chapters-close" id="chaptersClose" aria-label="Cerrar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="chapters-panel-header">
+          <span class="chapters-arc-label" id="chaptersArcLabel">Arco 1</span>
+          <h3 id="chaptersTitle">Untamed Flame</h3>
+          <p class="chapters-panel-sub">Selecciona un capítulo para leer</p>
+        </div>
+        <ul class="chapters-list" id="chaptersList"></ul>
+      </div>
+    </div>
+
+    <section class="novel-features">
+      <div class="feature-card">
+        <div class="f-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Historias Originales</h3>
+        <p>Contenido creado desde cero con narrativa propia.</p>
+      </div>
+      <div class="feature-card">
+        <div class="f-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Actualizaciones</h3>
+        <p>Nuevos capítulos y avances frecuentes.</p>
+      </div>
+      <div class="feature-card">
+        <div class="f-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2z"/></svg>
+        </div>
+        <h3>Personajes</h3>
+        <p>Protagonistas memorables en un universo propio.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <span class="footer-brand">WHITE HOLE</span>
+      <span class="footer-sep">•</span>
+      <span class="footer-copy">Portal de contenido</span>
+    </div>
+</footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/novel.js"></script>
+  <audio id="bgMusic" src="../assets/audio/bgm.mp3" loop preload="auto"></audio>
+</body>
+</html>
